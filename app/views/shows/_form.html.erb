@@ -1,0 +1,39 @@
+<%= form_with(model: show, local: true) do |form| %>
+  
+  <% if show.errors.any? %>
+    <div id="error-explanation">
+      <h2><%= pluralize(show.errors.count, "error") %> prohibited this show date from being saved:</h2>
+      
+      <ul>
+        <% show.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>  
+
+  <div class="field">
+    <%= form.label :date %>
+    <%= form.date_field :date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :city %>
+    <%= form.text_area :city %>
+  </div>
+
+  <div class="field">
+    <%= form.label :venue %>
+    <%= form.text_area :venue %>
+  </div>
+
+  <div class="field">
+    <%= form.label :info %>
+    <%= form.text_area :info %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>  
+
+<% end %> 

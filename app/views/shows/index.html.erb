@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<h1>DATES</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>City</th>
+      <th>Venue</th>
+      <th>More Info</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @shows.each do |show| %>
+      <tr>
+        <td><%= show.date %></td>
+        <td><%= show.city %></td>
+        <td><%= show.venue %></td>
+        <td><%= show.info %></td>
+        <td><%= link_to 'Edit', edit_show_path(show) %></td>
+        <td><%= link_to 'Destroy', show, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Add New Show Date', new_show_path %>
