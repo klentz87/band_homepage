@@ -2,6 +2,20 @@
 
 <h1>DATES</h1>
 
+    <% upcoming_shows = Array.new %>
+    <% past_shows = Array.new %>
+    
+
+    <% @shows.each do |show| %>
+      <% if show[:date] > Date.today %>
+        <% upcoming_shows.push(show) %>
+      <% else %>
+        <% past_shows.push(show) %> 
+      <% end %>
+    <% end %>  
+
+
+
 <table>
   <thead>
     <tr>
@@ -14,7 +28,11 @@
   </thead>
 
   <tbody>
-    <% @shows.each do |show| %>
+
+
+
+    <th>Upcoming Shows </th>
+    <% upcoming_shows.each do |show| %>
       <tr>
         <td><%= show.date %></td>
         <td><%= show.city %></td>
@@ -24,6 +42,20 @@
         <td><%= link_to 'Destroy', show, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
+
+    <th>Pasts Shows</th>
+    <% past_shows.each do |show| %>
+      <tr>
+        <td><%= show.date %></td>
+        <td><%= show.city %></td>
+        <td><%= show.venue %></td>
+        <td><%= show.info %></td>
+        <td><%= link_to 'Edit', edit_show_path(show) %></td>
+        <td><%= link_to 'Destroy', show, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>      
+
+
   </tbody>
 </table>
 
