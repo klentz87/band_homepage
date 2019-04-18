@@ -5,7 +5,7 @@ module ShowsHelper
     @past_shows = Array.new
     
     shows.each do |show|
-      if show[:date] > Date.today
+      if show[:date] >= Date.today
         @upcoming_shows.push(show)
       else
         @past_shows.push(show) 

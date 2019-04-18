@@ -18,34 +18,11 @@
   </thead>
 
   <tbody>
-
-
-
     <th>Upcoming Shows </th>
-    <% @upcoming_shows.each do |show| %>
-      <tr>
-        <td><%= show.date %></td>
-        <td><%= show.city %></td>
-        <td><%= show.venue %></td>
-        <td><%= show.info %></td>
-        <td><%= link_to 'Edit', edit_show_path(show) %></td>
-        <td><%= link_to 'Destroy', show, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+    <%= render partial: 'shows_table', collection: @upcoming_shows, as: :show %>   
 
     <th>Pasts Shows</th>
-    <% @past_shows.each do |show| %>
-      <tr>
-        <td><%= show.date %></td>
-        <td><%= show.city %></td>
-        <td><%= show.venue %></td>
-        <td><%= show.info %></td>
-        <td><%= link_to 'Edit', edit_show_path(show) %></td>
-        <td><%= link_to 'Destroy', show, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>      
-
-
+    <%= render partial: 'shows_table', collection: @past_shows, as: :show %>
   </tbody>
 </table>
 
