@@ -2,17 +2,7 @@
 
 <h1>DATES</h1>
 
-    <% upcoming_shows = Array.new %>
-    <% past_shows = Array.new %>
-    
-
-    <% @shows.each do |show| %>
-      <% if show[:date] > Date.today %>
-        <% upcoming_shows.push(show) %>
-      <% else %>
-        <% past_shows.push(show) %> 
-      <% end %>
-    <% end %>  
+<% date_helper(@shows) %>
 
 
 
@@ -32,7 +22,7 @@
 
 
     <th>Upcoming Shows </th>
-    <% upcoming_shows.each do |show| %>
+    <% @upcoming_shows.each do |show| %>
       <tr>
         <td><%= show.date %></td>
         <td><%= show.city %></td>
@@ -44,7 +34,7 @@
     <% end %>
 
     <th>Pasts Shows</th>
-    <% past_shows.each do |show| %>
+    <% @past_shows.each do |show| %>
       <tr>
         <td><%= show.date %></td>
         <td><%= show.city %></td>
