@@ -1,9 +1,9 @@
 class ShowsController < ApplicationController
   before_action :set_shows, only: [:show, :edit, :update, :destroy]
+  include UpcomingAndPastShowsConcern 
 
   # GET /shows
   def index
-    @shows = Show.all.order("date DESC")
   end
 
   # GET /shows/new
