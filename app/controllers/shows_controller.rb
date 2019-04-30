@@ -51,9 +51,13 @@ class ShowsController < ApplicationController
 #  end
 
   def delete_multiple
-    Show.where(:id => params[:show_ids]).destroy_all
+    @shows = Show.where(:id => params[:show_ids]).destroy_all
     respond_to do |format|
-      format.html { redirect_to shows_url, notice: 'Show dates removed' }
+      if @shows.empty?
+        format.html { redirect_to shows_url, notice: 'No dates selected'}
+      else 
+        format.html { redirect_to shows_url, notice: 'Show dates removed' }
+      end
     end
   end
 
