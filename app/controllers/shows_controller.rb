@@ -41,14 +41,14 @@ class ShowsController < ApplicationController
     end
   end
 
-  # DELETE /shows/1
+#  # DELETE /shows/1
 
-  def destroy 
-    @show.destroy
-    respond_to do |format|
-      format.html { redirect_to shows_url, notice: 'Show date was removed' }
-    end
-  end
+#  def destroy 
+#    @show.destroy
+#    respond_to do |format|
+#      format.html { redirect_to shows_url, notice: 'Show date was removed' }
+#    end
+#  end
 
   def delete_multiple
     Show.where(:id => params[:show_ids]).destroy_all
