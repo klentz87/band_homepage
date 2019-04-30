@@ -4,6 +4,7 @@ class ShowsController < ApplicationController
 
   # GET /shows
   def index
+    # See UpcomingAndPastShowsConcern in Concerns directory
   end
 
   # GET /shows/new
@@ -41,11 +42,18 @@ class ShowsController < ApplicationController
   end
 
   # DELETE /shows/1
+
   def destroy 
     @show.destroy
-
     respond_to do |format|
       format.html { redirect_to shows_url, notice: 'Show date was removed' }
+    end
+  end
+
+  def delete_multiple
+    Show.where(:id => params[:show_ids]).destroy_all
+    respond_to do |format|
+      format.html { redirect_to shows_url, notice: 'Show dates removed' }
     end
   end
 

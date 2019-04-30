@@ -2,27 +2,32 @@
 
 <h1>DATES</h1>
 
+  <%= form_tag delete_multiple_shows_path, method: :delete do %>
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>City</th>
+          <th>Venue</th>
+          <th>More Info</th>
+          <th colspan="2"></th>
+          <th>Delete</th>
+        </tr>
+      </thead>
 
-<table>
-  <thead>
-    <tr>
-      <th>Date</th>
-      <th>City</th>
-      <th>Venue</th>
-      <th>More Info</th>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
+      <tbody>
+        <th>Upcoming Shows </th>
+        <%= render partial: 'shows_table', collection: @upcoming_shows, as: :show %>   
 
-  <tbody>
-    <th>Upcoming Shows </th>
-    <%= render partial: 'shows_table', collection: @upcoming_shows, as: :show %>   
+        <th>Pasts Shows</th>
+        <%= render partial: 'shows_table', collection: @past_shows, as: :show %>
 
-    <th>Pasts Shows</th>
-    <%= render partial: 'shows_table', collection: @past_shows, as: :show %>
-  </tbody>
-</table>
+      </tbody>
+    </table>
 
-<br>
+    <%= submit_tag "Delete" %>
+  <% end %>
+  <br>
 
-<%= link_to 'Add New Show Date', new_show_path %>
+
+  <%= link_to 'Add New Show Date', new_show_path %>
