@@ -1,5 +1,7 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+    include CategoryFinderConcern 
+
 
   # GET /merch
   def index
@@ -12,15 +14,17 @@ class ProductsController < ApplicationController
 
   # GET /albums
   def albums
-#    @categories = Category.all.map{|c| [ c.name, c.id ] }
+    @products = Product.where(category_id: determine_category_id('albums'))
   end
 
   # GET /eps
   def eps # for EPs
+    @products = Product.where(category_id: determine_category_id('eps'))
   end
 
   # GET /other
-  def other 
+  def other
+    @products = Product.where(category_id: determine_category_id('other'))
   end
 
   # GET /merch/new
