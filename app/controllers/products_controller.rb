@@ -10,19 +10,35 @@ class ProductsController < ApplicationController
   def show
   end
 
+  # GET /albums
+  def albums
+#    @categories = Category.all.map{|c| [ c.name, c.id ] }
+  end
+
+  # GET /eps
+  def eps # for EPs
+  end
+
+  # GET /other
+  def other 
+  end
+
   # GET /merch/new
   def new
     @product = Product.new
+    @categories = Category.all.map{|c| [ c.name, c.id ] }
   end
 
   # GET /merch/1/edit  
   def edit
+    @categories = Category.all.map{|c| [ c.name, c.id ] }
   end
 
   # POST /merch
   def create
     @product = Product.new(product_params)
-    puts @product
+    @product.category_id = params[:category_id] 
+
 
     respond_to do |format|
       if @product.save
@@ -35,6 +51,7 @@ class ProductsController < ApplicationController
 
   # POST /merch/1
   def update 
+    @product.category_id = params[:category_id]
     respond_to do |format|
       if @product.update(product_params) 
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }

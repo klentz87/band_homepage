@@ -1,4 +1,6 @@
 class Product < ApplicationRecord
+  belongs_to :category
+  
   after_initialize :set_defaults
 
   def set_defaults

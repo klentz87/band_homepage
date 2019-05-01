@@ -7,6 +7,10 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'albums', to: 'products#albums'
+  get 'eps', to: 'products#eps'
+  get 'other', to: 'products#other'
+
   get 'contact', to: 'pages#contact'
   get 'links', to: 'pages#links'
 
