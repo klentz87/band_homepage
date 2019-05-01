@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
-    include CategoryFinderConcern 
-
+  before_action :set_categories, only: [:new, :edit]
+  include CategoryFinderConcern 
 
   # GET /merch
   def index
@@ -30,19 +30,16 @@ class ProductsController < ApplicationController
   # GET /merch/new
   def new
     @product = Product.new
-    @categories = Category.all.map{|c| [ c.name, c.id ] }
   end
 
   # GET /merch/1/edit  
   def edit
-    @categories = Category.all.map{|c| [ c.name, c.id ] }
   end
 
   # POST /merch
   def create
     @product = Product.new(product_params)
     @product.category_id = params[:category_id] 
-
 
     respond_to do |format|
       if @product.save
@@ -80,7 +77,12 @@ class ProductsController < ApplicationController
       @product = Product.find(params[:id])
     end
 
+    def set_categories
+      @categories = Category.all.map{|c| [ c.name, c.id ] }
+    end
+
     def product_params
       params.require(:product).permit(:name, :description, :link, :main_image, :thumb_image)
     end
+
 end
