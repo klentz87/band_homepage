@@ -1,9 +1,13 @@
-<p id="notice"><%= notice %></p>
+<div class="album">
+  <div class="container">
+    <p id="notice"><%= notice %></p>
 
-<h1>OTHER</h1>
+    <h1>OTHER</h1>
 
-<%= render 'products', products: @products %>
+    <%= render partial: 'products', collection: @products %>
 
-<br>
+    <br>
 
-<%= link_to 'New Product', new_product_path %>
+    <%= link_to 'New Product', new_product_path %>
+  </div>
+</div>

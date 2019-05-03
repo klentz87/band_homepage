@@ -4,7 +4,8 @@
 
 @import "bootstrap";
 
-img {
-  padding: 5px;
+.product-item {
+  max-width: 100%;
+  object-fit: cover;
 }
 
