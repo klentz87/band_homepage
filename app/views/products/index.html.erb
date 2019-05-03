@@ -1,12 +1,24 @@
-<div class="album"> 
-  <div class="container">
-    <div class="row">
-    <p id="notice"><%= notice %></p>
-      <%= render partial: 'product', collection: @products %>
+<div class="container">
+  <div class="d-flex justify-content-around flex-container">
+    <div>
+      <h4><%= link_to 'ALBUMS', albums_path %></h4>
     </div>
-      <br>    
-
-      <%= link_to 'New Product', new_product_path %>
-
+    <div>  
+      <h4><%= link_to 'EPs', eps_path %></h4>
+    </div>  
+    <div> 
+      <h4><%= link_to 'OTHER', other_path %></h4>
+    </div> 
   </div>
+ 
+    <div class="row">
+      <p id="notice"><%= notice %></p>
+
+      <%= render partial: 'product', collection: @products %>
+
+    </div>
+    <br>    
+
+    <%= link_to 'New Product', new_product_path %>
+
 </div>
