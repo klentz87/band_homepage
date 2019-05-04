@@ -4,7 +4,7 @@ class Product < ApplicationRecord
   after_initialize :set_defaults
 
   def set_defaults
-    self.main_image ||= Placeholder.image_generator(height: '600', width: '400')
+    self.main_image ||= Placeholder.image_generator(height: '900', width: '900')
     self.thumb_image ||= Placeholder.image_generator(height: '350', width: '350')
   end
 end

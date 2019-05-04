@@ -1,4 +1,7 @@
 <div class='col-sm-12 col-lg-4 my-4'>
-  <%= image_tag product.main_image, class: "img-fluid" %>
-  <h2><%= link_to product.name, product %></h2>
+  <div class="wrapper-div">  
+    <%= image_tag product.main_image, class: "img-fluid product-image" %>
+    
+    <h3><%= link_to product.name, product %></h3>
+  </div>  
 </div>

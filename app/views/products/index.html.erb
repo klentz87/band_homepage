@@ -1,17 +1,17 @@
-<div class="container">
-  <div class="d-flex justify-content-around flex-container">
+<div class="container-fluid mt-5">
+  <div class="d-flex justify-content-around mb-5">
     <div>
-      <h4><%= link_to 'ALBUMS', albums_path %></h4>
+      <h2><%= link_to 'ALBUMS', albums_path %></h2>
     </div>
     <div>  
-      <h4><%= link_to 'EPs', eps_path %></h4>
+      <h2><%= link_to 'EPs', eps_path %></h2>
     </div>  
     <div> 
-      <h4><%= link_to 'OTHER', other_path %></h4>
+      <h2><%= link_to 'OTHER', other_path %></h2>
     </div> 
   </div>
  
-    <div class="row">
+    <div class="row mx-auto">
       <p id="notice"><%= notice %></p>
 
       <%= render partial: 'product', collection: @products %>
