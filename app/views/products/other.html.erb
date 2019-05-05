@@ -1,13 +1,15 @@
-<div class="album">
-  <div class="container">
-    <p id="notice"><%= notice %></p>
+<div class="container-fluid mt-5">
 
-    <h1>OTHER</h1>
+  <%= render partial: 'merch_nav' %>
+ 
+    <div class="row mx-auto">
+      <p id="notice"><%= notice %></p>
 
-    <%= render partial: 'product', collection: @products %>
+      <%= render partial: 'product', collection: @products %>
 
-    <br>
+    </div>
+    <br>    
 
     <%= link_to 'New Product', new_product_path %>
-  </div>
+
 </div>

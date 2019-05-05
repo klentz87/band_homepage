@@ -1,9 +1,22 @@
-<p id="notice"><%= notice %></p>
+<div class="container-fluid">
+  <p id="notice"><%= notice %></p>
 
-<p><%= image_tag @product.main_image %>
-<p><%= @product.name %></p>
-<p><%= @product.description %></p>
-<p><%= @product.link %></p>
+  <div class="row">
+    <div class="col-sm-12 col-lg-6  mb-5">
+      <%= image_tag @product.main_image, class: "img-fluid product-image" %>
+    </div>
 
-<%= link_to 'EDIT', edit_product_path %>
-<%= link_to 'BACK', products_path %>
+    <div class="col-sm-0 col-lg-1">
+    </div>
+  
+    <div class="col-sm-12 col-lg-4 product-description">
+      <h2><%= @product.name %></h2>
+      <hr>
+      <p><%= @product.description %></p>
+      <br>
+      <p><%= @product.link %></p>
+    </div>
+  </div>
+  <%= link_to 'EDIT', edit_product_path %>
+  <%= link_to 'BACK', products_path %>
+</div>
