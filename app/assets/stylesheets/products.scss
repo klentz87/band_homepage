@@ -8,10 +8,19 @@
   width: 100%;
 }
 
+.nav-link a {
+  color: gray;
+}
+
 .merch-navbar .nav-link {
-  color: black;
+  color: gray;
+}
+
+.merch-navbar .nav-link:hover {
+  text-decoration: underline;
 }
 
 .merch-navbar .active {
+  color: black;
   text-decoration: underline;
 }
