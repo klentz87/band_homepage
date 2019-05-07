@@ -4,17 +4,14 @@
 
 @import "bootstrap";
 
-/*
-.product-image {
-  display: block;
-  margin: 0 auto;
-} 
-*/
-
 .product-image {
   width: 100%;
 }
 
-.product-description {
-  float: right;
+.merch-navbar .nav-link {
+  color: black;
+}
+
+.merch-navbar .active {
+  text-decoration: underline;
 }
