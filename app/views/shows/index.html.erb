@@ -1,32 +1,42 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
 
-<h1>DATES</h1>
+  <p id="notice"><%= notice %></p>
 
-<table>
-  <thead>
-    <tr>
-      <th>Date</th>
-      <th>City</th>
-      <th>Venue</th>
-      <th>More Info</th>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
+  <h1 class="mb-4">DATES</h1>
+  <p><%= link_to 'Add New Show Date', new_show_path %></p>
 
-  <tbody>
-    <% @shows.each do |show| %>
-      <tr>
-        <td><%= show.date %></td>
-        <td><%= show.city %></td>
-        <td><%= show.venue %></td>
-        <td><%= show.info %></td>
-        <td><%= link_to 'Edit', edit_show_path(show) %></td>
-        <td><%= link_to 'Destroy', show, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <%= form_tag delete_multiple_shows_path, method: :delete do %>
+      <table class="table mx-auto">
+        <h3 class="text-center mb-3">Upcoming Shows</h3>
+
+        <tr>
+          <th>Date</th>
+          <th>City</th>
+          <th>Venue</th>
+          <th>More Info</th>
+          <th colspan="2"></th>
+          <th>Delete</th>
+        </tr>
+
+        <tbody>
+        </tbody>
+
+        <tbody>
+          <%= render partial: 'shows_table', collection: @upcoming_shows, as: :show, locals: { current: true } %>
+        </tbody>     
+      </table>
+
+      <hr class="my-5">
+      
+      <table class="table past-shows mt-3">    
+        <h3>Past Shows</h3>
+
+        <tbody>
+          <%= render partial: 'shows_table', collection: @past_shows, as: :show, locals: { current: false } %>
+        </tbody>
+      </table>
+
+      <%= submit_tag "Delete Selected", class: 'btn btn-danger float-right' %>
     <% end %>
-  </tbody>
-</table>
 
-<br>
-
-<%= link_to 'Add New Show Date', new_show_path %>
+</div>  

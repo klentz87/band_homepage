@@ -1,0 +1,13 @@
+<tr>
+  <td class='table-data'><%= show.date %></td>
+  <td class='table-data'><%= show.city %></td>
+  <td class='table-data'><%= show.venue %></td>
+  <%# No need for link to an outside page if show has already taken place %>  
+  <% if current == true %>
+    <td class='table-data'><%= show.info %></td>
+  <% end %>
+
+  <td colspan="1"></td>
+  <td><%= link_to 'Edit', edit_show_path(show) %></td>
+  <td><%= check_box_tag "show_ids[]", show.id, false, class: 'selectable' %></td>
+</tr>

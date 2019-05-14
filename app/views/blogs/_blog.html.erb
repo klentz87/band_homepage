@@ -1,0 +1,13 @@
+<div class="col-md-9 mt-4 mb-4 px-0">
+  <h2><%= link_to blog.title, blog %></h2>
+  <p><strong><%= blog.created_at.to_date %></strong></p>
+
+  <p>
+    <%= blog.body %>
+  </p>
+  <div>
+    <%= link_to 'Edit', edit_blog_path(blog) %>  
+    <%= link_to 'Delete', blog, method: :delete, data: { confirm: 'Are you sure?' } %>
+  </div>
+
+</div>
