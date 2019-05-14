@@ -13,3 +13,18 @@
  *= require_tree .
  *= require_self
  */
+
+@import "bootstrap";
+@import "font-awesome";
+
+li .fa {
+  font-size: 1.25rem;
+  color: gray;
+  padding-left: .5rem;
+  padding-right: .5rem;
+}
+
+.navbar-nav {
+  display: flex;
+  align-items: center;
+}

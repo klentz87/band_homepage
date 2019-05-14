@@ -1,9 +1,10 @@
 class ShowsController < ApplicationController
   before_action :set_shows, only: [:show, :edit, :update, :destroy]
+  include UpcomingAndPastShowsConcern 
 
   # GET /shows
   def index
-    @shows = Show.all.order("date DESC")
+    # See UpcomingAndPastShowsConcern in Concerns directory
   end
 
   # GET /shows/new
@@ -40,12 +41,23 @@ class ShowsController < ApplicationController
     end
   end
 
-  # DELETE /shows/1
-  def destroy 
-    @show.destroy
+#  # DELETE /shows/1
 
+#  def destroy 
+#    @show.destroy
+#    respond_to do |format|
+#      format.html { redirect_to shows_url, notice: 'Show date was removed' }
+#    end
+#  end
+
+  def delete_multiple
+    @shows = Show.where(:id => params[:show_ids]).destroy_all
     respond_to do |format|
-      format.html { redirect_to shows_url, notice: 'Show date was removed' }
+      if @shows.empty?
+        format.html { redirect_to shows_url, notice: 'No dates selected'}
+      else 
+        format.html { redirect_to shows_url, notice: 'Show dates removed' }
+      end
     end
   end
 
