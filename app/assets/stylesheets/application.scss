@@ -20,8 +20,11 @@
 li .fa {
   font-size: 1.25rem;
   color: gray;
+  padding-left: .5rem;
+  padding-right: .5rem;
 }
 
-li .fa a {
-  margin: auto;
+.navbar-nav {
+  display: flex;
+  align-items: center;
 }
