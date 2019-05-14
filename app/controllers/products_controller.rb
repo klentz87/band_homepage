@@ -1,5 +1,7 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :set_categories, only: [:new, :edit]
+  include CategoryFinderConcern 
 
   # GET /merch
   def index
@@ -8,6 +10,21 @@ class ProductsController < ApplicationController
 
   # GET /merch/1
   def show
+  end
+
+  # GET /albums
+  def albums
+    @products = Product.where(category_id: determine_category_id('albums'))
+  end
+
+  # GET /eps
+  def eps # for EPs
+    @products = Product.where(category_id: determine_category_id('eps'))
+  end
+
+  # GET /other
+  def other
+    @products = Product.where(category_id: determine_category_id('other'))
   end
 
   # GET /merch/new
@@ -22,7 +39,7 @@ class ProductsController < ApplicationController
   # POST /merch
   def create
     @product = Product.new(product_params)
-    puts @product
+    @product.category_id = params[:category_id] 
 
     respond_to do |format|
       if @product.save
@@ -35,6 +52,7 @@ class ProductsController < ApplicationController
 
   # POST /merch/1
   def update 
+    @product.category_id = params[:category_id]
     respond_to do |format|
       if @product.update(product_params) 
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
@@ -59,7 +77,12 @@ class ProductsController < ApplicationController
       @product = Product.find(params[:id])
     end
 
-    def product_params
-      params.require(:product).permit(:name, :description, :link)
+    def set_categories
+      @categories = Category.all.map{|c| [ c.name, c.id ] }
     end
+
+    def product_params
+      params.require(:product).permit(:name, :description, :link, :main_image, :thumb_image)
+    end
+
 end
