@@ -65,3 +65,6 @@ gem 'bootstrap', '~> 4.3', '>= 4.3.1'
 gem 'jquery-rails', '~> 4.3.1'
 gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.4' 
 gem 'jquery-ui-rails'  
+gem 'kaminari', '~> 1.1', '>= 1.1.1'
+gem 'friendly_id', '~> 5.1.0'
+
