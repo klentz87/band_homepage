@@ -3,7 +3,7 @@
   <p><strong><%= blog.created_at.to_date %></strong></p>
 
   <p>
-    <%= blog.body %>
+    <%= simple_format blog.body %>
   </p>
   <div>
     <%= link_to 'Edit', edit_blog_path(blog) %>  
